@@ -1,0 +1,24 @@
+name: Psalm Security Scan
+
+on: [push, pull_request]
+
+jobs:
+  psalm:
+    name: Code Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Psalm Scan
+        uses: docker://vimeo/psalm-github-actions
+        with:
+          security_analysis: true
+          report_file: results.sarif
+          composer_ignore_platform_reqs: true
+          composer_require_dev: true
+
+      - name: Upload Security Analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
