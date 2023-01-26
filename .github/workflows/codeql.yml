@@ -15,7 +15,7 @@ jobs:
         with:
           security_analysis: true
           report_file: results.sarif
-          composer_ignore_platform_reqs: true
+          # composer_ignore_platform_reqs: true
           composer_require_dev: true
 
       - name: Upload Security Analysis results to GitHub
