@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('test-sqlInjection', [\App\Http\Controllers\VulnController::class, 'sqlInjection']);
+Route::get('test-traversal', [\App\Http\Controllers\VulnController::class, 'traversal']);
+Route::get('test-openRedirection', [\App\Http\Controllers\VulnController::class, 'openRedirection']);
+Route::get('test-commandInjection', [\App\Http\Controllers\VulnController::class, 'commandInjection']);
+
 Route::get('/', function () {
     return view('welcome');
 });
